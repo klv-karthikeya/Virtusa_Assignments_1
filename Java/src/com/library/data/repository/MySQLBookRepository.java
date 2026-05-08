@@ -9,8 +9,8 @@ import java.util.*;
 public class MySQLBookRepository implements IBookRepository {
     @Override
     public void save(Book book) {
-        String sql = "INSERT INTO books (id, title, author, isbn, is_available) VALUES (?, ?, ?, ?, ?) " +
-                     "ON DUPLICATE KEY UPDATE title=?, author=?, isbn=?, is_available=?";
+        String sql = "INSERT INTO books (id, title, author, isbn, is_available) VALUES (?, ?, ?, ?, ?) 
+                     ON DUPLICATE KEY UPDATE title=?, author=?, isbn=?, is_available=?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, book.getId());
